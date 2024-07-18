@@ -14,15 +14,9 @@ function MainPage() {
   const limitNum = 20;
   const url = `https://pokeapi.co/api/v2/pokemon/?limit=1008&offset=0`;
 
-  // const debouncedSearchTerm = useDebounce(searchTerm, 500);
-
   useEffect(() => {
     fetchPokeData();
   }, []);
-
-  // useEffect(() => {
-  //   handleSearchInput(debouncedSearchTerm);
-  // }, [debouncedSearchTerm]);
 
   const filterDisplayedPokemonData = (
     allPokemonsData,
