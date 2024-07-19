@@ -8,6 +8,8 @@ import { ArrowLeft } from "../../assets/ArrowLeft";
 import { Balance } from "../../assets/Balance";
 import { Vector } from "../../assets/Vector";
 import Type from "../../components/Type";
+import BaseStat from "../../components/BaseStat";
+import DamageRelations from "../../components/DamageRelations";
 
 const DetailPage = () => {
   const [pokemon, setPokemon] = useState();
@@ -59,6 +61,7 @@ const DetailPage = () => {
       setIsLoading(false);
     }
   }
+
   const formatPokemonStats = ([
     statHP,
     statATK,
@@ -85,7 +88,6 @@ const DetailPage = () => {
     const urlPokemon = `${baseUrl}?limit=1&offset=${id - 1}`;
 
     const { data: pokemonData } = await axios.get(urlPokemon);
-    console.log(pokemonData);
 
     const nextResponse =
       pokemonData.next && (await axios.get(pokemonData.next));
@@ -198,12 +200,25 @@ const DetailPage = () => {
           </div>
 
           <h2 className={`text-base font-semibold ${text}`}>기본 능력치</h2>
-          <div className="w-full">Stat</div>
+          <div className="w-full">
+            <table>
+              <tbody>
+                {pokemon.stats.map((stat) => (
+                  <BaseStat
+                    key={stat.name}
+                    valueStat={stat.baseStat}
+                    nameStat={stat.name}
+                    type={pokemon.types[0]}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {pokemon.DamageRelations && (
             <div className="w-10/12">
               <h2 className={`text-base font-semibold text-center ${text}`}>
-                데미지 관계
+                <DamageRelations damages={pokemon.DamageRelations} />
               </h2>
               데미지
             </div>
