@@ -3,13 +3,11 @@ import React from "react";
 const Type = ({ type, damageValue }) => {
   const bg = `bg-${type}`;
   return (
-    <div>
-      <span
-        className={`h-[1.5rem] py-1 px-3 rounded-2xl ${bg} font-bold text-zinc-800 
+    <div
+      className={`h-[1.5rem] py-1 px-3 rounded-2xl ${bg} font-bold text-zinc-800 
       text-[0.6rem] leading-[0.8rem] capitalize flex gap-1 jusify-center items-center`}
-      >
-        {type}
-      </span>
+    >
+      <span>{type}</span>
       {damageValue && (
         <span className="bg-zinc-200/40 p-[.125rem]">{damageValue}</span>
       )}
