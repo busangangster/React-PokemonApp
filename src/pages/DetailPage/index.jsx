@@ -58,8 +58,6 @@ const DetailPage = () => {
           description: await getPokemonDescription(id),
         };
 
-        console.log(formattedPokemonData);
-
         setPokemon(formattedPokemonData);
         setIsLoading(false);
       }
